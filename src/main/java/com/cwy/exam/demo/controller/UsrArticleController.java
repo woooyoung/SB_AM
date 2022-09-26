@@ -43,12 +43,6 @@ public class UsrArticleController {
 		return null;
 	}
 
-	private void deleteArticle(int id) {
-		Article article = getArticle(id);
-
-		articles.remove(article);
-	}
-
 	private Article writeArticle(String title, String body) {
 		int id = lastArticleId + 1;
 		Article article = new Article(id, title, body);
@@ -57,6 +51,19 @@ public class UsrArticleController {
 		lastArticleId = id;
 
 		return article;
+	}
+
+	private void deleteArticle(int id) {
+		Article article = getArticle(id);
+
+		articles.remove(article);
+	}
+
+	private void modifyArticle(int id, String title, String body) {
+		Article article = getArticle(id);
+
+		article.setTitle(title);
+		article.setBody(body);
 	}
 
 	// 액션메서드
@@ -86,6 +93,20 @@ public class UsrArticleController {
 		deleteArticle(id);
 
 		return id + "번 게시물을 삭제했습니다";
+	}
+
+	@RequestMapping("/usr/article/doModify")
+	@ResponseBody
+	public String doModify(int id, String title, String body) {
+		Article article = getArticle(id);
+
+		if (article == null) {
+			return id + "번 게시물은 존재하지 않습니다";
+		}
+
+		modifyArticle(id, title, body);
+
+		return id + "번 게시물을 수정했습니다";
 	}
 
 }
