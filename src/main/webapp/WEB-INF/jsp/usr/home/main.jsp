@@ -6,6 +6,9 @@
 <title>메인</title>
 </head>
 <body>
-	<div>메인페이지</div>
+		<h1>메인페이지</h1>
+		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi soluta ipsa unde eveniet aperiam harum
+				vitae quisquam officiis rem pariatur beatae et delectus dolore necessitatibus incidunt praesentium dolorum. At
+				dolore.</div>
 </body>
 </html>
