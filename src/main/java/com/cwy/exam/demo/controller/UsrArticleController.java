@@ -54,7 +54,7 @@ public class UsrArticleController {
 		return ResultData.newData(writeArticleRd, "article", article);
 	}
 
-	@RequestMapping("/usr/article/getArticles")
+	@RequestMapping("/usr/article/list")
 	public String showList(Model model) {
 		List<Article> articles = articleService.getArticles();
 
