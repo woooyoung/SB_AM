@@ -23,10 +23,12 @@
 		ORDER BY A.id DESC
 	</select>
 
-	<select id="getArticle" resultType="Article">
-		SELECT *
-		FROM article
-		WHERE id
+	<select id="getForPrintArticle" resultType="Article">
+		SELECT A.*, M.nickname AS extra__writerName
+		FROM article AS A
+		LEFT JOIN `member` AS M
+		ON A.memberId = M.id
+		WHERE A.id
 		= #{id}
 	</select>
 
