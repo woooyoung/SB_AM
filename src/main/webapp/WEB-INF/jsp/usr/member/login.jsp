@@ -22,14 +22,15 @@
 					</tr>
 					<tr>
 						<th></th>
-						<td><input type="submit" value="로그인" /></td>
+						<td><button type="submit" value="로그인" />로그인
+							</button></td>
 					</tr>
 				</tbody>
 			</table>
 		</form>
 	</div>
 
-	<div class="btns">
+	<div class="container mx-auto btns">
 		<button class="btn-text-link" type="button" onclick="history.back();">뒤로가기</button>
 	</div>
 
