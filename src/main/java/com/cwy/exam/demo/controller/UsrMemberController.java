@@ -1,6 +1,6 @@
 package com.cwy.exam.demo.controller;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,7 @@ import com.cwy.exam.demo.service.MemberService;
 import com.cwy.exam.demo.util.Ut;
 import com.cwy.exam.demo.vo.Member;
 import com.cwy.exam.demo.vo.ResultData;
+import com.cwy.exam.demo.vo.Rq;
 
 @Controller
 public class UsrMemberController {
@@ -57,20 +58,16 @@ public class UsrMemberController {
 	}
 
 	@RequestMapping("usr/member/login")
-	public String showLogin(HttpSession httpSession) {
+	public String showLogin() {
 		return "usr/member/login";
 	}
 
 	@RequestMapping("usr/member/doLogin")
 	@ResponseBody
-	public String doLogin(HttpSession httpSession, String loginId, String loginPw) {
-		boolean isLogined = false;
+	public String doLogin(HttpServletRequest req, String loginId, String loginPw) {
+		Rq rq = (Rq) req.getAttribute("rq");
 
-		if (httpSession.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-		}
-
-		if (isLogined) {
+		if (rq.isLogined()) {
 			return Ut.jsHistoryBack("이미 로그인 되었습니다");
 		}
 
@@ -92,27 +89,23 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다");
 		}
 
-		httpSession.setAttribute("loginedMemberId", member.getId());
+		rq.login(member);
 
 		return Ut.jsReplace(Ut.f("%s님 환영합니다", member.getNickname()), "/");
 	}
 
 	@RequestMapping("usr/member/doLogout")
 	@ResponseBody
-	public ResultData doLogout(HttpSession httpSession) {
-		boolean isLogined = false;
+	public String doLogout(HttpServletRequest req) {
+		Rq rq = (Rq) req.getAttribute("rq");
 
-		if (httpSession.getAttribute("loginedMemberId") == null) {
-			isLogined = true;
+		if (!rq.isLogined()) {
+			return Ut.jsHistoryBack("로그아웃 상태입니다");
 		}
 
-		if (isLogined) {
-			return ResultData.from("F-1", "로그아웃 상태입니다");
-		}
+		rq.logout();
 
-		httpSession.removeAttribute("loginedMemberId");
-
-		return ResultData.from("S-1", "로그아웃 되었습니다");
+		return Ut.jsReplace("로그아웃 되었습니다", "/");
 	}
 
 }
