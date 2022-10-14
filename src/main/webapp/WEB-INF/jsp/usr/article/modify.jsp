@@ -7,7 +7,7 @@
 	<div class="container mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../article/doModify">
 			<input type="hidden" name="id" value="${article.id }" />
-			<table>
+			<table class="table table-zebra w-full">
 				<colgroup>
 					<col width="200" />
 				</colgroup>
@@ -15,7 +15,7 @@
 				<tbody>
 					<tr>
 						<th>번호</th>
-						<td>${article.id }</td>
+						<td><div class="badge">${article.id }</div></td>
 					</tr>
 					<tr>
 						<th>작성날짜</th>
@@ -31,15 +31,15 @@
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input class="w-full" type="text" name="title" placeholder="제목을 입력해주세요" value="${article.title }" /></td>
+						<td><input class="w-full input input-bordered  max-w-xs" type="text" name="title" placeholder="제목을 입력해주세요" value="${article.title }" /></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea class="w-full" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea></td>
+						<td><textarea class="textarea textarea-bordered w-full" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea></td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><button type="submit" value="수정" />수정
+						<td><button class="btn btn-active btn-ghost" type="submit" value="수정" />수정
 							</button></td>
 					</tr>
 				</tbody>
@@ -48,10 +48,10 @@
 		</form>
 
 		<div class="btns">
-			<button class="btn-text-link" type="button" onclick="history.back();">뒤로가기</button>
-			<a class="btn-text-link" href="../article/modify?id=${article.id }">수정</a>
+			<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
+			<a class="btn-text-link btn btn-active btn-ghost" href="../article/modify?id=${article.id }">수정</a>
 			<c:if test="${article.extra__actorCanDelete }">
-				<a class="btn-text-link" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+				<a class="btn-text-link btn btn-active btn-ghost" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 					href="../article/doDelete?id=${article.id }"
 				>삭제</a>
 			</c:if>

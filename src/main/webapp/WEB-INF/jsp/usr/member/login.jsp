@@ -14,15 +14,15 @@
 				<tbody>
 					<tr>
 						<th>아이디</th>
-						<td><input class="w-96" name="loginId" type="text" placeholder="아이디를 입력해주세요" /></td>
+						<td><input class="w-full input input-bordered  max-w-xs" name="loginId" type="text" placeholder="아이디를 입력해주세요" /></td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
-						<td><input class="w-96" name="loginPw" type="text" placeholder="비밀번호를 입력해주세요" /></td>
+						<td><input class="w-full input input-bordered  max-w-xs" name="loginPw" type="text" placeholder="비밀번호를 입력해주세요" /></td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><button type="submit" value="로그인" />로그인
+						<td><button class="btn btn-active btn-ghost" type="submit" value="로그인" />로그인
 							</button></td>
 					</tr>
 				</tbody>
@@ -31,7 +31,7 @@
 	</div>
 
 	<div class="container mx-auto btns">
-		<button class="btn-text-link" type="button" onclick="history.back();">뒤로가기</button>
+		<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
 	</div>
 
 </section>
