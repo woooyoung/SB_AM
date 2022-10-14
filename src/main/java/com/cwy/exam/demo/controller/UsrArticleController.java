@@ -24,9 +24,17 @@ public class UsrArticleController {
 	private ArticleService articleService;
 
 	// 액션메서드
-	@RequestMapping("/usr/article/doAdd")
+
+	@RequestMapping("/usr/article/write")
+
+	public String showWrite(HttpServletRequest req, String title, String body) {
+
+		return "usr/article/write";
+	}
+
+	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
-	public ResultData<Article> doAdd(HttpServletRequest req, String title, String body) {
+	public ResultData<Article> doWrite(HttpServletRequest req, String title, String body) {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (Ut.empty(title)) {
