@@ -17,17 +17,46 @@
 						<td>${rq.loginedMember.nickname }</td>
 					</tr>
 					<tr>
+						<th>게시판</th>
+						<td>
+							<select class="select select-bordered" name="boardId">
+								<option disabled>게시판을 선택해주세요</option>
+								<option value="1">공지사항</option>
+								<option value="2">자유</option>
+							</select>
+							<!-- 							<label> -->
+							<!-- 								공지사항 -->
+							<!-- 								<input type="radio" name="boardId" value="1" /> -->
+							<!-- 							</label> -->
+							<!-- 							<label> -->
+							<!-- 								자유 -->
+							<!-- 								<input type="radio" name="boardId" value="2" /> -->
+							<!-- 							</label> -->
+						</td>
+					</tr>
+					<tr>
 						<th>제목</th>
-						<td><input class="w-full input input-bordered  max-w-xs" type="text" name="title" placeholder="제목을 입력해주세요" /></td>
+						<td>
+							<input required="required" class="w-full input input-bordered  max-w-xs" type="text" name="title"
+								placeholder="제목을 입력해주세요"
+							/>
+						</td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea class="textarea textarea-bordered w-full" type="text" name="body" placeholder="내용을 입력해주세요" /></textarea></td>
+						<td>
+							<textarea required="required" class="textarea textarea-bordered w-full" type="text" name="body"
+								placeholder="내용을 입력해주세요"
+							/></textarea>
+						</td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><button class="btn btn-active btn-ghost" type="submit" value="작성" />작성
-							</button></td>
+						<td>
+							<button class="btn btn-active btn-ghost" type="submit" value="작성" />
+							작성
+							</button>
+						</td>
 					</tr>
 				</tbody>
 
