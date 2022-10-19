@@ -28,7 +28,9 @@
 						<tr class="hover">
 							<td>${article.id}</td>
 							<td>${article.regDate.substring(2,16)}</td>
-							<td><a class="hover:underline" href="../article/detail?id=${article.id}">${article.title}</a></td>
+							<td>
+								<a class="hover:underline" href="../article/detail?id=${article.id}">${article.title}</a>
+							</td>
 							<td>${article.extra__writerName}</td>
 
 						</tr>
@@ -36,6 +38,13 @@
 				</tbody>
 
 			</table>
+		</div>
+		<div class="page-menu mt-3 flex justify-center">
+			<div class="btn-group">
+				<c:forEach begin="1" end="20" var="i">
+					<a class="btn btn-sm ${param.page == i ? 'btn-active' : '' }" href="?page=${i }">${i }</a>
+				</c:forEach>
+			</div>
 		</div>
 	</div>
 </section>
