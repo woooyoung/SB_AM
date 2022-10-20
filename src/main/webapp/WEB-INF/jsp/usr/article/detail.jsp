@@ -14,7 +14,9 @@
 				<tbody>
 					<tr>
 						<th>번호</th>
-						<td><div class="badge">${article.id }</div></td>
+						<td>
+							<div class="badge">${article.id }</div>
+						</td>
 					</tr>
 					<tr>
 						<th>작성날짜</th>
@@ -23,6 +25,10 @@
 					<tr>
 						<th>수정날짜</th>
 						<td>${article.updateDate }</td>
+					</tr>
+					<tr>
+						<th>조회수</th>
+						<td>${article.hitCount }</td>
 					</tr>
 					<tr>
 						<th>작성자</th>

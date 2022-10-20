@@ -2,8 +2,10 @@ package com.cwy.exam.demo.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
+@ToString
 public class ResultData<DT> {
 	@Getter
 	private String resultCode;
