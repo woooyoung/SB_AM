@@ -41,6 +41,7 @@
 						<th>날짜</th>
 						<th>제목</th>
 						<th>작성자</th>
+						<th>조회수</th>
 					</tr>
 				</thead>
 
@@ -53,6 +54,7 @@
 								<a class="hover:underline block w-full truncate" href="../article/detail?id=${article.id}">${article.title}</a>
 							</td>
 							<td>${article.extra__writerName}</td>
+							<td>${article.hitCount}</td>
 
 						</tr>
 					</c:forEach>
