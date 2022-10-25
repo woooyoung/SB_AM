@@ -15,7 +15,9 @@
 				<tbody>
 					<tr>
 						<th>번호</th>
-						<td><div class="badge">${article.id }</div></td>
+						<td>
+							<div class="badge">${article.id }</div>
+						</td>
 					</tr>
 					<tr>
 						<th>작성날짜</th>
@@ -26,23 +28,42 @@
 						<td>${article.updateDate }</td>
 					</tr>
 					<tr>
+						<th>조회수</th>
+						<td>
+							<span class="badge article-detail__hit-count">${article.hitCount }</span>
+						</td>
+					</tr>
+					<tr>
 						<th>작성자</th>
 						<td>${article.extra__writerName }</td>
 					</tr>
 					<tr>
+						<th>추천</th>
+						<td>
+							<span class="badge ">${article.extra__goodReactionPoint }</span>
+						</td>
+					</tr>
+					<tr>
 						<th>제목</th>
-						<td><input class="w-full input input-bordered  max-w-xs" type="text" name="title" placeholder="제목을 입력해주세요"
-							value="${article.title }"
-						/></td>
+						<td>
+							<input class="w-full input input-bordered  max-w-xs" type="text" name="title" placeholder="제목을 입력해주세요"
+								value="${article.title }"
+							/>
+						</td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea class="textarea textarea-bordered w-full" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea></td>
+						<td>
+							<textarea class="textarea textarea-bordered w-full" type="text" name="body" placeholder="내용을 입력해주세요" />${article.body }</textarea>
+						</td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><button class="btn btn-active btn-ghost" type="submit" value="수정" />수정
-							</button></td>
+						<td>
+							<button class="btn btn-active btn-ghost" type="submit" value="수정" />
+							수정
+							</button>
+						</td>
 					</tr>
 				</tbody>
 
