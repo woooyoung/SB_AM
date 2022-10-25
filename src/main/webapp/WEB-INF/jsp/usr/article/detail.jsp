@@ -73,6 +73,12 @@
 						<th>추천</th>
 						<td>
 							<span class="badge ">${article.extra__goodReactionPoint }</span>
+							<c:if test="${actorCanMakeReaction}">
+								<span>&nbsp;</span>
+								<button class="btn btn-outline btn-xs">좋아요 👍</button>
+								<span>&nbsp;</span>
+								<button class="btn btn-outline btn-xs">싫어요 👎</button>
+							</c:if>
 						</td>
 					</tr>
 					<tr>
@@ -101,5 +107,4 @@
 		</div>
 	</div>
 </section>
-<!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=1" frameborder="0"></iframe> -->
 <%@ include file="../common/foot.jspf"%>

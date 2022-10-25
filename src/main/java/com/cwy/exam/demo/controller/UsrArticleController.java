@@ -151,6 +151,10 @@ public class UsrArticleController {
 
 		model.addAttribute("article", article);
 
+		boolean actorCanMakeReaction = articleService.actorCanMakeReaction(rq.getLoginedMemberId(), id);
+
+		model.addAttribute("actorCanMakeReaction", actorCanMakeReaction);
+
 		return "usr/article/detail";
 	}
 
