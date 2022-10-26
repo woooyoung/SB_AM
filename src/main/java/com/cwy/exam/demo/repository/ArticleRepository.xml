@@ -18,9 +18,9 @@
 
 	<!-- </select> -->
 
-<!-- 	<select id="getForPrintArticle" resultType="Article"> -->
-		
-<!-- 	</select> -->
+	<!-- <select id="getForPrintArticle" resultType="Article"> -->
+
+	<!-- </select> -->
 
 	<delete id="deleteArticle">
 		DELETE FROM article
