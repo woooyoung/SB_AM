@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cwy.exam.demo.service.ArticleService;
 import com.cwy.exam.demo.service.BoardService;
+import com.cwy.exam.demo.service.ReactionPointService;
 import com.cwy.exam.demo.util.Ut;
 import com.cwy.exam.demo.vo.Article;
 import com.cwy.exam.demo.vo.Board;
@@ -24,6 +25,8 @@ public class UsrArticleController {
 	private ArticleService articleService;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private ReactionPointService reactionPointService;
 	@Autowired
 	private Rq rq;
 
@@ -151,7 +154,8 @@ public class UsrArticleController {
 
 		model.addAttribute("article", article);
 
-		boolean actorCanMakeReaction = articleService.actorCanMakeReaction(rq.getLoginedMemberId(), id);
+		boolean actorCanMakeReaction = reactionPointService.actorCanMakeReaction(rq.getLoginedMemberId(), "article",
+				id);
 
 		model.addAttribute("actorCanMakeReaction", actorCanMakeReaction);
 
