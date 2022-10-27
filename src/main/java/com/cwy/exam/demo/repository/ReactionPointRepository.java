@@ -1,5 +1,6 @@
 package com.cwy.exam.demo.repository;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -16,5 +17,31 @@ public interface ReactionPointRepository {
 			</script>
 						""")
 	int getSumReactionPointByMemberId(int actorId, String relTypeCode, int relId);
+
+	@Insert("""
+			<script>
+				INSERT INTO reactionPoint
+				SET regDate = NOW(),
+				updateDate = NOW(),
+				relTypeCode = #{relTypeCode},
+				relId = #{relId},
+				memberId = #{actorId},
+				`point` = 1
+			</script>
+						""")
+	void addGoodReactionPoint(int actorId, String relTypeCode, int relId);
+
+	@Insert("""
+			<script>
+				INSERT INTO reactionPoint
+				SET regDate = NOW(),
+				updateDate = NOW(),
+				relTypeCode = #{relTypeCode},
+				relId = #{relId},
+				memberId = #{actorId},
+				`point` = -1
+			</script>
+						""")
+	void addBadReactionPoint(int actorId, String relTypeCode, int relId);
 
 }
