@@ -24,14 +24,6 @@
 								<option value="1">공지사항</option>
 								<option value="2">자유</option>
 							</select>
-							<!-- 							<label> -->
-							<!-- 								공지사항 -->
-							<!-- 								<input type="radio" name="boardId" value="1" /> -->
-							<!-- 							</label> -->
-							<!-- 							<label> -->
-							<!-- 								자유 -->
-							<!-- 								<input type="radio" name="boardId" value="2" /> -->
-							<!-- 							</label> -->
 						</td>
 					</tr>
 					<tr>
