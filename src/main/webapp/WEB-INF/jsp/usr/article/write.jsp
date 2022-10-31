@@ -53,9 +53,7 @@
 					<tr>
 						<th></th>
 						<td>
-							<button class="btn btn-active btn-ghost" type="submit" value="작성" />
-							작성
-							</button>
+							<button class="btn btn-active btn-ghost" type="submit" value="작성">작성</button>
 						</td>
 					</tr>
 				</tbody>
