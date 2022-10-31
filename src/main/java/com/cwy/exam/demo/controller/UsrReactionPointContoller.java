@@ -28,9 +28,10 @@ public class UsrReactionPointContoller {
 			return rq.jsHistoryBackOnView(actorCanMakeReactionRd.getMsg());
 		}
 
-		reactionPointService.addGoodReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData addGoodReactionPointRd = reactionPointService.addGoodReactionPoint(rq.getLoginedMemberId(),
+				relTypeCode, relId);
 
-		return rq.jsReplace("좋아요!", replaceUri);
+		return rq.jsReplace(addGoodReactionPointRd.getMsg(), replaceUri);
 	}
 
 	@RequestMapping("/usr/reactionPoint/doBadReaction")
@@ -44,9 +45,10 @@ public class UsrReactionPointContoller {
 			return rq.jsHistoryBackOnView(actorCanMakeReactionRd.getMsg());
 		}
 
-		reactionPointService.addBadReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData addBadReactionPointRd = reactionPointService.addBadReactionPoint(rq.getLoginedMemberId(),
+				relTypeCode, relId);
 
-		return rq.jsReplace("싫어요!", replaceUri);
+		return rq.jsReplace(addBadReactionPointRd.getMsg(), replaceUri);
 	}
 
 	@RequestMapping("/usr/reactionPoint/doCancelGoodReaction")
@@ -60,9 +62,10 @@ public class UsrReactionPointContoller {
 			return rq.jsHistoryBackOnView(actorCanMakeReactionRd.getMsg());
 		}
 
-		reactionPointService.deleteGoodReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData deleteGoodReactionPointRd = reactionPointService.deleteGoodReactionPoint(rq.getLoginedMemberId(),
+				relTypeCode, relId);
 
-		return rq.jsReplace("좋아요 취소!", replaceUri);
+		return rq.jsReplace(deleteGoodReactionPointRd.getMsg(), replaceUri);
 	}
 
 	@RequestMapping("/usr/reactionPoint/doCancelBadReaction")
@@ -76,9 +79,10 @@ public class UsrReactionPointContoller {
 			return rq.jsHistoryBackOnView(actorCanMakeReactionRd.getMsg());
 		}
 
-		reactionPointService.deleteBadReactionPoint(rq.getLoginedMemberId(), relTypeCode, relId);
+		ResultData deleteBadReactionPointRd = reactionPointService.deleteBadReactionPoint(rq.getLoginedMemberId(),
+				relTypeCode, relId);
 
-		return rq.jsReplace("싫어요 취소!", replaceUri);
+		return rq.jsReplace(deleteBadReactionPointRd.getMsg(), replaceUri);
 	}
 
 }
