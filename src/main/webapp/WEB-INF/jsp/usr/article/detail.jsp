@@ -36,32 +36,7 @@
 	})
 </script>
 
-<script>
-	// 댓글관련
-	let ReplyWrite__submitFormDone = false;
-	function ReplyWrite__submitForm(form) {
-		if (ReplyWrite__submitFormDone) {
-			return;
-		}
 
-		form.body.value = form.body.value.trim();
-
-		// 		if (form.body.value.length == 0) {
-		// 			alert('댓글을 입력해주세요');
-		// 			form.body.focus();
-		// 			return;
-		// 		}
-
-		if (form.body.value.length < 2) {
-			alert('2글자 이상 입력해주세요');
-			form.body.focus();
-			return;
-		}
-
-		ReplyWrite__submitFormDone = true;
-		form.submit();
-	}
-</script>
 
 
 <section class="mt-8 text-xl">
@@ -135,8 +110,6 @@
 									class="btn btn-xs btn-primary"
 								>싫어요 👎</a>
 							</c:if>
-
-
 						</td>
 					</tr>
 					<tr>
@@ -165,6 +138,33 @@
 		</div>
 	</div>
 </section>
+<!--                                                                		 -->
+<script>
+	// 댓글관련
+	let ReplyWrite__submitFormDone = false;
+	function ReplyWrite__submitForm(form) {
+		if (ReplyWrite__submitFormDone) {
+			return;
+		}
+
+		form.body.value = form.body.value.trim();
+
+		// 		if (form.body.value.length == 0) {
+		// 			alert('댓글을 입력해주세요');
+		// 			form.body.focus();
+		// 			return;
+		// 		}
+
+		if (form.body.value.length < 2) {
+			alert('2글자 이상 입력해주세요');
+			form.body.focus();
+			return;
+		}
+
+		ReplyWrite__submitFormDone = true;
+		form.submit();
+	}
+</script>
 
 <section class="mt-5">
 	<div class="container mx-auto px-3">
@@ -205,6 +205,12 @@
 		<c:if test="${rq.notLogined }">
 			<a class="btn-text-link btn  btn-ghost" href="/usr/member/login">로그인</a> 후 이용해주세요
 		</c:if>
+	</div>
+</section>
+
+<section class="mt-5">
+	<div class="container mx-auto px-3">
+		<h2>댓글 리스트(${repliesCount })</h2>
 	</div>
 </section>
 <%@ include file="../common/foot.jspf"%>
