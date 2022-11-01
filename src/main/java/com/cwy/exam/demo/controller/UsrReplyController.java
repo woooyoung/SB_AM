@@ -36,12 +36,12 @@ public class UsrReplyController {
 
 		ResultData<Integer> writeReplyRd = replyService.writeReply(rq.getLoginedMemberId(), relTypeCode, relId, body);
 
-		int id = (int) writeReplyRd.getData1();
+		int id = writeReplyRd.getData1();
 
 		if (Ut.empty(replaceUri)) {
 			switch (relTypeCode) {
 			case "article":
-				replaceUri = Ut.f("../article/detail?id=%d", id);
+				replaceUri = Ut.f("../article/detail?id=%d", relId);
 				break;
 			}
 
