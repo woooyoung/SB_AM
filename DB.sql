@@ -253,6 +253,14 @@ relTypeCode = 'article',
 relId = 2,
 `body` = '댓글 4';
 
+# 댓글 테이블에 goodReactionPoint 칼럼 추가
+ALTER TABLE reply ADD COLUMN goodReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
+# 게시물 테이블에 badReactionPoint 칼럼 추가
+ALTER TABLE reply ADD COLUMN badReactionPoint INT(10) UNSIGNED NOT NULL DEFAULT 0;
+
+# 댓글 테이블에 인덱스 걸기
+ALTER TABLE `SB_AM`.`reply` ADD INDEX (`relTypeCode` , `relId`);
 
 #######################################################
 
@@ -331,4 +339,11 @@ FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode, RP.relId
 */
 
+EXPLAIN SELECT R.*, M.nickname AS extra__writerName
+FROM reply AS R
+LEFT JOIN `member` AS M
+ON R.memberId = M.id
+WHERE R.relTypeCode = 'article'
+AND R.relId = 2
+ORDER BY R.id DESC
 
