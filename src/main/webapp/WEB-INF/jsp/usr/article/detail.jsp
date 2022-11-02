@@ -242,11 +242,11 @@
 						<td class="text-left">${reply.getForPrintBody()}</td>
 						<td>
 							<c:if test="${reply.extra__actorCanModify }">
-								<a href="btn btn-ghost" href="../reply/modify/id=${reply.id }">수정</a>
+								<a class="btn-text-link btn btn-ghost" href="../reply/modify?id=${reply.id }">수정</a>
 							</c:if>
 							<c:if test="${reply.extra__actorCanDelete }">
-								<a href="btn btn-ghost" onclick="if(confirm('삭제 하시겠습니까?') == false) return false;"
-									href="../reply/doDelete/id=${reply.id }"
+								<a class="btn-text-link btn btn-ghost" onclick="if(confirm('삭제 하시겠습니까?') == false) return false;"
+									href="../reply/doDelete?id=${reply.id }"
 								>삭제</a>
 							</c:if>
 						</td>
