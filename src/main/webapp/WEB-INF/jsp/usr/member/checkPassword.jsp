@@ -1,52 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="MYPAGE" />
+<c:set var="pageTitle" value="checkPassword" />
 <%@ include file="../common/head.jspf"%>
-<%@ page import="com.cwy.exam.demo.util.Ut"%>
 
 <section class="mt-8 text-xl">
 	<div class="container mx-auto px-3">
-		<div class="table-box-type-1">
+		<form class="table-box-type-1" method="POST" action="../member/doCheckPassword">
+			<input type="hidden" name="replaceUri" value="${param.replaceUri }" />
 			<table>
 				<colgroup>
 					<col width="200" />
 				</colgroup>
+
 				<tbody>
-					<tr>
-						<th>가입일</th>
-						<td>${rq.loginedMember.regDate }</td>
-					</tr>
 					<tr>
 						<th>아이디</th>
 						<td>${rq.loginedMember.loginId }</td>
 					</tr>
 					<tr>
-						<th>이름</th>
-						<td>${rq.loginedMember.name }</td>
-					</tr>
-					<tr>
-						<th>닉네임0</th>
-						<td>${rq.loginedMember.nickname }</td>
-					</tr>
-					<tr>
-						<th>전화번호</th>
-						<td>${rq.loginedMember.cellphoneNum }</td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td>${rq.loginedMember.email }</td>
+						<th>비밀번호</th>
+						<td>
+							<input required="required" class="w-full input input-bordered  max-w-xs" name="loginPw" type="password"
+								placeholder="비밀번호를 입력해주세요"
+							/>
+						</td>
 					</tr>
 					<tr>
 						<th></th>
 						<td>
-							<a href="../member/checkPassword?replaceUri=${Ut.getUriEncoded('../member/modify')}"
-								class="btn btn-active btn-ghost"
-							> 회원정보수정 </a>
+							<button class="btn btn-active btn-ghost" type="submit" value="확인">확인</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		</form>
 	</div>
 
 	<div class="container mx-auto btns">
