@@ -49,7 +49,6 @@ public class Rq {
 		this.loginedMemberId = loginedMemberId;
 		this.loginedMember = loginedMember;
 
-		this.req.setAttribute("rq", this);
 	}
 
 	public void printHistoryBackJs(String msg) {
@@ -111,9 +110,12 @@ public class Rq {
 		return Ut.getUriEncoded(getCurrentUri());
 	}
 
-	// 해당 메서드는 Rq 객체의 생성을 유도한다.
-	// 삭제 금지, 편의를 위하여 BeforeActionInterceptor 에서 호출해줘야 한다.
-	public void initOnBeforeActionInterceptor() {
+	public void runA() {
+		System.out.println("A 호출됨");
+		runB();
+	}
 
+	public void runB() {
+		System.out.println("B 호출됨");
 	}
 }
