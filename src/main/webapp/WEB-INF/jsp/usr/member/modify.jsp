@@ -75,7 +75,7 @@
 		<form class="table-box-type-1" method="POST" action="../member/doModify"
 			onsubmit="MemberModify__submit(this); return false;"
 		>
-			<%-- 			<input type="hidden" name="id" value="${member.id }" /> --%>
+			<input type="hidden" name="memberModifyAuthKey" value="${param.memberModifyAuthKey }" />
 			<table class="table table-zebra w-full">
 				<colgroup>
 					<col width="200" />
@@ -121,8 +121,8 @@
 					<tr>
 						<th>전화번호</th>
 						<td>
-							<input value="${rq.loginedMember.cellphoneNum }" name="cellphoneNum" class="w-full input input-bordered  max-w-xs"
-								placeholder="전화번호를 입력해주세요"
+							<input value="${rq.loginedMember.cellphoneNum }" name="cellphoneNum"
+								class="w-full input input-bordered  max-w-xs" placeholder="전화번호를 입력해주세요"
 							/>
 						</td>
 					</tr>
