@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cwy.exam.demo.service.MemberService;
 import com.cwy.exam.demo.util.Ut;
-import com.cwy.exam.demo.vo.Article;
 import com.cwy.exam.demo.vo.Member;
 import com.cwy.exam.demo.vo.ResultData;
 import com.cwy.exam.demo.vo.Rq;
