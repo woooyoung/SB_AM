@@ -110,17 +110,16 @@ public class Rq {
 		return Ut.getUriEncoded(getCurrentUri());
 	}
 
-	public void runA() {
-		System.out.println("A 호출됨");
-		runB();
-	}
-
-	public void runB() {
-		System.out.println("B 호출됨");
-	}
-
 	public void printReplaceJs(String msg, String url) {
 		resp.setContentType("text/html; charset=UTF-8");
 		print(Ut.jsReplace(msg, url));
+	}
+
+	public String getLoginUri() {
+		return "../member/login?afterLoginUri=" + getAfterLoginUri();
+	}
+
+	public String getAfterLoginUri() {
+		return getEncodedCurrentUri();
 	}
 }

@@ -15,7 +15,6 @@ public class UsrHomeController {
 
 	@RequestMapping("/usr/home/main")
 	public String showMain() {
-		rq.runA();
 
 		return "usr/home/main";
 	}
