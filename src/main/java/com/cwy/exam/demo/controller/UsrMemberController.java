@@ -57,6 +57,11 @@ public class UsrMemberController {
 
 		return ResultData.newData(joinRd, "member", member);
 	}
+	
+	@RequestMapping("usr/member/join")
+	public String showJoin() {
+		return "usr/member/join";
+	}
 
 	@RequestMapping("usr/member/login")
 	public String showLogin() {

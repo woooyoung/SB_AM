@@ -90,7 +90,7 @@
 		</form>
 
 		<div class="btns">
-			<a class="btn-text-link btn btn-active btn-ghost" href="${param.replceUri }">뒤로가기</a>
+			<a class="btn-text-link btn btn-active btn-ghost" href="${param.replaceUri }">뒤로가기</a>
 		</div>
 	</div>
 </section>
