@@ -185,6 +185,7 @@
 			>
 				<input type="hidden" name="relTypeCode" value="article" />
 				<input type="hidden" name="relId" value="${article.id }" />
+				<input type="hidden" name="replaceUri" value="${rq.currentUri }" />
 				<table class="table table-zebra w-full">
 					<colgroup>
 						<col width="200" />
@@ -252,11 +253,11 @@
 						<td class="text-left">${reply.getForPrintBody()}</td>
 						<td>
 							<c:if test="${reply.extra__actorCanModify }">
-								<a class="btn-text-link btn btn-ghost" href="../reply/modify?id=${reply.id }">수정</a>
+								<a class="btn-text-link btn btn-ghost" href="../reply/modify?id=${reply.id }&replaceUri=${rq.encodedCurrentUri}">수정</a>
 							</c:if>
 							<c:if test="${reply.extra__actorCanDelete }">
 								<a class="btn-text-link btn btn-ghost" onclick="if(confirm('삭제 하시겠습니까?') == false) return false;"
-									href="../reply/doDelete?id=${reply.id }"
+									href="../reply/doDelete?id=${reply.id }&replaceUri=${rq.encodedCurrentUri}"
 								>삭제</a>
 							</c:if>
 						</td>
