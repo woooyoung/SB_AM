@@ -28,7 +28,7 @@
 					<tr>
 						<th></th>
 						<td>
-							<button class="btn btn-active btn-ghost" type="submit" value="로그인">로그인</button>
+							<button class="btn btn-active btn-ghost" type="submit">로그인</button>
 						</td>
 					</tr>
 				</tbody>
