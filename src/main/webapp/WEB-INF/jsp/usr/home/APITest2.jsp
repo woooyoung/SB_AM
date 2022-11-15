@@ -4,6 +4,9 @@
 <%@ include file="../common/head.jspf"%>
 
 <div id="map" style="width: 500px; height: 500px;"></div>
+<div class="msg-1"></div>
+<div class="msg-2"></div>
+<div style="background-color:black; width:100px; height:100px;" onclick="removeText();"></div>
 <p>
 	<button onclick="setCenter()">지도 중심좌표 이동시키기</button>
 	<button onclick="panTo()">지도 중심좌표 부드럽게 이동시키기</button>
@@ -25,7 +28,8 @@
 		Lolocation = data.body[0].longitude;
 		console.log(Lalocation);
 		console.log(Lolocation);
-
+		$('.msg-1').html('<div class="mt-2"> API 위도 : ' + data.body[0].latitude + '</div>');
+		
 	}
 	getData();
 	var lat = 36.3701311788239;
@@ -51,7 +55,7 @@
 		console.log("위도" + Lalocation);
 		console.log("경도" + Lolocation);
 		var moveLatLon = new kakao.maps.LatLng(lat, lot);
-
+		$('.msg-2').html('<div class="mt-2"> TEST 위도 : ' + lat + '</div>');
 		// 지도 중심을 부드럽게 이동시킵니다
 		// 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
 		map.panTo(moveLatLon);
@@ -66,6 +70,10 @@
 	});
 
 	marker.setMap(map);
+	
+	function removeText() {
+		$('.msg-2').html('<div class="mt-2"> TEST 위도 : </div>');
+	}
 </script>
 
 <%@ include file="../common/foot.jspf"%>
