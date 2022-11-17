@@ -79,11 +79,11 @@ body {
 
 /* 팝업 닫기 버튼(x) */
 .toggle-btn {
-	width: 100px;
-	height: 100px;
-	bottom: 20px;
-	right: 150px;
-	position: absolute;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	right: 10px;
+	top: 10px;
 }
 
 .toggle-btn>div {

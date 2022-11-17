@@ -23,6 +23,7 @@ $('.close-btn').click(function() {
 	//	$('.layer').css('display', 'none');
 });
 
+
 /* 팝업 닫기 버튼(x) */
 $('.toggle-btn').click(function() {
 	$(this).toggleClass('active');

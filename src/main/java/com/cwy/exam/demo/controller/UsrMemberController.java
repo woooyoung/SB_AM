@@ -99,7 +99,7 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("아이디를 잘못 입력했습니다");
 		}
 
-		if (member.getLoginPw().equals(loginPw) == false) {
+		if (member.getLoginPw().equals(Ut.sha256(loginPw)) == false) {
 			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다");
 		}
 

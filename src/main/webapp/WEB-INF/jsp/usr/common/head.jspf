@@ -24,6 +24,12 @@
 <script src="/resource/common.js" defer="defer"></script>
 </head>
 <body>
+<!-- 	<div class="side-bar"> -->
+<!-- 		<div class="status-icon"> -->
+<!-- 			<div>▶</div> -->
+<!-- 			<div>▼</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	<header>
 		<div class=" h-20 flex container mx-auto text-3xl">
 			<a href="/" class=" flex items-center px-3">
