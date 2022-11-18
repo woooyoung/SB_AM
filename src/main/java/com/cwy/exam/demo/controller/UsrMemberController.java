@@ -164,6 +164,7 @@ public class UsrMemberController {
 
 		if (Ut.empty(loginPw)) {
 			loginPw = null;
+			return rq.jsHistoryBack("비밀번호를 입력해주세요");
 		}
 
 		ResultData modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, cellphoneNum,
