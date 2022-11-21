@@ -57,7 +57,7 @@ loginPw = 'admin',
 `name` = '관리자', 
 nickname = '관리자',
 cellphoneNum = '01012341234',
-email = 'axdsw121@gmail.com';
+email = 'axdswww12@gmail.com';
 
 # 회원 테스트데이터 생성 (일반)
 INSERT INTO `member` 
@@ -68,7 +68,7 @@ loginPw = 'test1',
 `name` = '사용자1', 
 nickname = '사용자1',
 cellphoneNum = '01043214321',
-email = 'axdsw121@gmail.com';
+email = 'axdswww12@gmail.com';
 
 INSERT INTO `member` 
 SET regDate = NOW(),
@@ -78,7 +78,7 @@ loginPw = 'test2',
 `name` = '사용자2', 
 nickname = '사용자2',
 cellphoneNum = '01067896789',
-email = 'axdsw121@gmail.com';
+email = 'axdswww12@gmail.com';
 
 # 게시물 테이블에 회원번호 칼럼 추가
 ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER `updateDate`;
@@ -373,7 +373,7 @@ FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode, RP.relId
 */
 
-EXPLAIN SELECT R.*, M.nickname AS extra__writerName
+explain SELECT R.*, M.nickname AS extra__writerName
 FROM reply AS R
 LEFT JOIN `member` AS M
 ON R.memberId = M.id
@@ -388,4 +388,4 @@ LEFT JOIN `member` AS M
 ON R.memberId = M.id
 WHERE R.id = 3
 
-SELECT SHA2('Hello',256)
+select sha2('Hello',256)
