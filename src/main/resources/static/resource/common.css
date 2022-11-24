@@ -17,7 +17,7 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 }
 
 .table-box-type-1>table th, .table-box-type-1>table td {
-	border: 1px solid black;
+	border: 1px solid rgba(31, 41, 55, 0.2);
 	padding: 10px;
 	text-align: center;
 }
@@ -32,7 +32,7 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 }
 
 html[data-theme="dark"] :is(.table-box-type-1>table th, .table-box-type-1>table td) {
-	border-color: white;
+	border-color: rgba(166, 173, 186, 0.2);
 }
 
 html>body .toast-ui-viewer {
@@ -42,16 +42,16 @@ html>body .toast-ui-viewer {
 
 /* 커스텀 */
 /* 테마 */
-.btn-theme-toggle > span:first-child {
-  display:none;
+.btn-theme-toggle>span:first-child {
+	display: none;
 }
 
-html[data-theme="dark"] .btn-theme-toggle > span:first-child {
-  display:inline;
+html[data-theme="dark"] .btn-theme-toggle>span:first-child {
+	display: inline;
 }
 
-html[data-theme="dark"] .btn-theme-toggle > span:last-child {
-  display:none;
+html[data-theme="dark"] .btn-theme-toggle>span:last-child {
+	display: none;
 }
 
 body {
