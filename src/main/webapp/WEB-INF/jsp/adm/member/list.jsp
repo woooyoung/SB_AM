@@ -36,12 +36,12 @@
 		<div class="table-box-type-1 mt-3">
 			<table class="table table-fixed w-full">
 				<colgroup>
-					<col width="80" />
-					<col width="140" />
 					<col />
-					<col width="140" />
-					<col width="50" />
-					<col width="50" />
+					<col />
+					<col />
+					<col />
+					<col />
+					<col />
 				</colgroup>
 				<thead>
 					<tr>
@@ -59,7 +59,7 @@
 						<tr class="hover">
 							<td>${member.id}</td>
 							<td>${member.forPrintType1RegDate}</td>
-							<td>${member.getForPrintType1UpdateDate}</td>
+							<td>${member.forPrintType1UpdateDate}</td>
 							<td>${member.loginId}</td>
 							<td>${member.name}</td>
 							<td>${member.nickname}</td>

@@ -120,6 +120,13 @@ Theme__init();
 						</a>
 					</li>
 				</c:if>
+				<c:if test="${rq.admin}">
+					<li class="hover:underline">
+						<a class="h-full px-3 flex items-center" href="/adm/member/list">
+							<span>관리자</span>
+						</a>
+					</li>
+				</c:if>
 				<li class="hover:underline">
 					<a class="h-full px-3 flex items-center" href="/usr/home/APITest2">
 						<span>API</span>
