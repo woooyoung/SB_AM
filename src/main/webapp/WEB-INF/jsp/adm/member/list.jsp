@@ -72,6 +72,23 @@
 
 			</table>
 		</div>
+
+		<script>
+			$('.checkbox-all-member-id').change(function() {
+				const $all = $(this);
+				const allChecked = $all.prop('checked');
+				$('.checkbox-member-id').prop('checked', allChecked);
+			});
+			$('.checkbox-member-id')
+					.change(
+							function() {
+								const checkboxMemberIdCount = $('.checkbox-member-id').length;
+								const checkboxMemberIdCheckedCount = $('.checkbox-member-id:checked').length;
+								const allChecked = checkboxMemberIdCount == checkboxMemberIdCheckedCount;
+								$('.checkbox-all-member-id').prop('checked',
+										allChecked);
+							});
+		</script>
 		<div class="page-menu mt-3 flex justify-center">
 			<div class="btn-group">
 
