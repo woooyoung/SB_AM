@@ -56,7 +56,7 @@
 					</tr>
 				</thead>
 
-				<tbody>
+				<tbody class="text-base">
 					<c:forEach var="member" items="${members }">
 						<tr class="hover">
 							<th><input type="checkbox" class="checkbox-member-id" value="${member.id }" /></th>
@@ -74,21 +74,43 @@
 		</div>
 
 		<script>
-			$('.checkbox-all-member-id').change(function() {
-				const $all = $(this);
-				const allChecked = $all.prop('checked');
-				$('.checkbox-member-id').prop('checked', allChecked);
-			});
-			$('.checkbox-member-id')
-					.change(
-							function() {
-								const checkboxMemberIdCount = $('.checkbox-member-id').length;
-								const checkboxMemberIdCheckedCount = $('.checkbox-member-id:checked').length;
-								const allChecked = checkboxMemberIdCount == checkboxMemberIdCheckedCount;
-								$('.checkbox-all-member-id').prop('checked',
-										allChecked);
-							});
+		$('.checkbox-all-member-id').change(function() {
+		      const $all = $(this);
+		      const allChecked = $all.prop('checked');
+		      $('.checkbox-member-id').prop('checked', allChecked);
+		    });
+		    $('.checkbox-member-id').change(function() {
+		      const checkboxMemberIdCount = $('.checkbox-member-id').length;
+		      const checkboxMemberIdCheckedCount = $('.checkbox-member-id:checked').length;
+		      const allChecked = checkboxMemberIdCount == checkboxMemberIdCheckedCount;
+		      $('.checkbox-all-member-id').prop('checked', allChecked);
+		      
+		    });
 		</script>
+
+		<div>
+			<button class="btn btn-error btn-delete-selected-members">선택삭제</button>
+		</div>
+
+		<form hidden method="POST" name="do-delete-members-form" action="../member/doDeleteMembers">
+			<input type="hidden" name="ids" value="" />
+		</form>
+
+		<script>
+    		$('.btn-delete-selected-members').click(function() {
+      			const values = $('.checkbox-member-id:checked').map((index, el) => el.value).toArray();
+      			if ( values.length == 0 ) {
+       		 		alert('삭제할 회원을 선택 해주세요.');
+       		 		return;
+     			}
+      			if ( confirm('정말 삭제하시겠습니까?') == false ) {
+        			return;
+     			}
+      			document['do-delete-members-form'].ids.value = values.join(',');
+      			document['do-delete-members-form'].submit();
+    		});
+    	</script>
+
 		<div class="page-menu mt-3 flex justify-center">
 			<div class="btn-group">
 

@@ -292,6 +292,17 @@ ALTER TABLE `member` MODIFY COLUMN loginPw VARCHAR(100) NOT NULL;
 UPDATE `member`
 SET loginPw = SHA2(loginPw, 256);
 
+# 회원 대량 생성
+INSERT INTO `member`
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = UUID(),
+loginPw = 'test1',
+`name` = '사용자',
+nickname = '사용자',
+cellphoneNum = '01011111111',
+email = 'axdswww12@gmail.com';
+
 #######################################################
 
 SELECT * FROM attr;
@@ -373,7 +384,7 @@ FROM reactionPoint AS RP
 GROUP BY RP.relTypeCode, RP.relId
 */
 
-explain SELECT R.*, M.nickname AS extra__writerName
+EXPLAIN SELECT R.*, M.nickname AS extra__writerName
 FROM reply AS R
 LEFT JOIN `member` AS M
 ON R.memberId = M.id
@@ -388,4 +399,4 @@ LEFT JOIN `member` AS M
 ON R.memberId = M.id
 WHERE R.id = 3
 
-select sha2('Hello',256)
+SELECT SHA2('Hello',256)

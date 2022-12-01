@@ -38,8 +38,11 @@ public class AdmMemberController {
 		model.addAttribute("searchKeyword", searchKeyword);
 
 		model.addAttribute("membersCount", membersCount);
-		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("members", members);
+		
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("page", page);
+		
 
 		return "adm/member/list";
 	}
