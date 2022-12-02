@@ -113,6 +113,7 @@ public interface MemberRepository {
 			SELECT M.*
 			FROM `member` AS M
 			WHERE 1
+			AND delStatus = 0
 			<if test="authLevel != 0">
 				AND M.authLevel = #{authLevel}
 			</if>
@@ -144,5 +145,18 @@ public interface MemberRepository {
 							""")
 	List<Member> getForPrintMembers(String authLevel, String searchKeywordTypeCode, String searchKeyword,
 			int limitStart, int limitTake);
+
+	@Select("""
+			<script>
+			UPDATE `member`
+			<set>
+				updateDate = NOW(),
+				delStatus = 1,
+				delDate = NOW(),
+			</set>
+			WHERE id = #{id}
+			</script>
+			""")
+	void deleteMember(int id);
 
 }
