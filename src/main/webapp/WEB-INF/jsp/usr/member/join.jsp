@@ -95,7 +95,7 @@
 			validLoginId = '';
 			return;
 		}
-		if (validLoginId == form.loginId.value){
+		if (validLoginId == form.loginId.value) {
 			return;
 		}
 		$('.loginId-msg').html('<div class="mt-2">확인중...</div>');
@@ -110,20 +110,22 @@
 			} else {
 				validLoginId = '';
 			}
-			
-			if (data.resultCode == 'F-B'){
+
+			if (data.resultCode == 'F-B') {
 				alert(data.msg);
 				location.replace('/');
 			}
 		}, 'json');
 	}
-	
-	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup,300); 
+
+	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 300);
 </script>
 
 <section class="mt-8 text-xl">
 	<div class="container mx-auto px-3">
-		<form class="table-box-type-1" method="POST" action="../member/doJoin" onsubmit="submitJoinForm(this); return false;">
+		<form class="table-box-type-1" method="POST" enctype="multipart/form-data" action="../member/doJoin"
+			onsubmit="submitJoinForm(this); return false;"
+		>
 			<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
 			<table class="table table-zebra w-full">
 				<colgroup>
@@ -162,6 +164,12 @@
 						<th>닉네임</th>
 						<td>
 							<input name="nickname" class="w-full input input-bordered  max-w-xs" placeholder="닉네임을 입력해주세요" />
+						</td>
+					</tr>
+					<tr>
+						<th>프로필 이미지</th>
+						<td>
+							<input name="profileImg" placeholder="프로필 이미지를 선택해주세요" type="file" />
 						</td>
 					</tr>
 					<tr>
