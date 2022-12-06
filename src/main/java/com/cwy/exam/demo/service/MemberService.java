@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.cwy.exam.demo.repository.MemberRepository;
 import com.cwy.exam.demo.util.Ut;
-import com.cwy.exam.demo.vo.Article;
 import com.cwy.exam.demo.vo.Member;
 import com.cwy.exam.demo.vo.ResultData;
 
@@ -49,7 +48,7 @@ public class MemberService {
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 		int id = memberRepository.getLastInsertId();
 
-		return ResultData.from("S-1", "회원가입이 완료되었습니다", "id", id);
+		return new ResultData("S-1", "회원가입이 완료되었습니다", "id", id);
 	}
 
 	public Member getMemberByNameAndEmail(String name, String email) {

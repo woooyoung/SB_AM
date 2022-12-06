@@ -169,7 +169,9 @@
 					<tr>
 						<th>프로필 이미지</th>
 						<td>
-							<input name="profileImg" placeholder="프로필 이미지를 선택해주세요" type="file" />
+							<input type="file" id="input-profile" accept="image/gif, image/jpeg, image/png"
+								oninput="readImage(this); return false;" name="file__member__0__extra__profileImg__1" class="p-3 w-96"
+							/>
 						</td>
 					</tr>
 					<tr>

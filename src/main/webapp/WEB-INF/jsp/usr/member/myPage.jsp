@@ -7,6 +7,12 @@
 <section class="mt-8 text-xl">
 	<div class="container mx-auto px-3">
 		<div class="table-box-type-1">
+			<!-- 회원 프로필 -->
+			<div class="w-40 border rounded-xl border-gray-400">
+				<img class="w-full rounded-xl" src="${rq.getProfileImgUri(rq.loginedMemberId)}"
+					onerror="${rq.profileFallbackImgOnErrorHtml}" alt=""
+				/>
+			</div>
 			<table>
 				<colgroup>
 					<col width="200" />

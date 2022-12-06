@@ -223,4 +223,16 @@ public class Rq {
 		return loginedMember.isAdmin();
 	}
 
+	public String getProfileImgUri(int membeId) {
+		return "/sb_am_img/member/" + membeId + "/extra/profileImg/1";
+	}
+
+	public String getProfileFallbackImgUri() {
+		return "https://via.placeholder.com/150/?text=*^_^*";
+	}
+
+	public String getProfileFallbackImgOnErrorHtml() {
+		return "this.src = '" + getProfileFallbackImgUri() + "'";
+	}
+
 }

@@ -10,6 +10,7 @@ import com.cwy.exam.demo.vo.GenFile;
 
 @Mapper
 public interface GenFileRepository {
+
 	void saveMeta(Map<String, Object> param);
 
 	GenFile getGenFile(@Param("relTypeCode") String relTypeCode, @Param("relId") int relId,

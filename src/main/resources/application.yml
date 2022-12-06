@@ -30,7 +30,7 @@ spring:
 mybatis:
   type-aliases-package: com.cwy.exam.demo.vo
 custom:
-  genFileDirPath: C:\workspace_cwy\sts-4.15.2.RELEASE-workspace
+  genFileDirPath: C:\workspace_cwy\sts-4.15.2.RELEASE-workspace\demo\sb_am_img
   siteName: SB_AM
   siteMainUri: http://localhost:8081
   emailFrom: no-reply@localhost
