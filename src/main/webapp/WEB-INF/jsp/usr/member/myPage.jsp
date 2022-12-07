@@ -12,6 +12,7 @@
 				<img class="w-full rounded-xl" src="${rq.getProfileImgUri(rq.loginedMemberId)}"
 					onerror="${rq.profileFallbackImgOnErrorHtml}" alt=""
 				/>
+				<div>${rq.getProfileImgUri(rq.loginedMemberId)}</div>
 			</div>
 			<table>
 				<colgroup>

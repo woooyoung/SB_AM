@@ -119,6 +119,7 @@
 	}
 
 	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 300);
+
 </script>
 
 <section class="mt-8 text-xl">

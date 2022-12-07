@@ -224,7 +224,7 @@ public class Rq {
 	}
 
 	public String getProfileImgUri(int membeId) {
-		return "/sb_am_img/member/" + membeId + "/extra/profileImg/1";
+		return "/sb_am_img/member/" + membeId + "/2022_12/1";
 	}
 
 	public String getProfileFallbackImgUri() {
