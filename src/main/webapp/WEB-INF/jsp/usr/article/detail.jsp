@@ -71,7 +71,15 @@
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td>${article.extra__writerName }</td>
+
+						<td>
+							<span>${article.extra__writerName }</span>
+							<span>
+								<img class="w-40 h-40 object-cover" src="${rq.getProfileImgUri(article.memberId)}"
+									onerror="${rq.profileFallbackImgOnErrorHtml}" alt=""
+								/>
+							</span>
+						</td>
 					</tr>
 					<tr>
 						<th>추천</th>
