@@ -119,7 +119,6 @@
 	}
 
 	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 300);
-
 </script>
 
 <section class="mt-8 text-xl">
@@ -170,9 +169,7 @@
 					<tr>
 						<th>프로필 이미지</th>
 						<td>
-							<input type="file" id="input-profile" accept="image/gif, image/jpeg, image/png"
-								oninput="readImage(this); return false;" name="file__member__0__extra__profileImg__1" class="p-3 w-96"
-							/>
+							<input name="file__member__0__extra__profileImg__1" placeholder="프로필 이미지를 선택해주세요" type="file" />
 						</td>
 					</tr>
 					<tr>

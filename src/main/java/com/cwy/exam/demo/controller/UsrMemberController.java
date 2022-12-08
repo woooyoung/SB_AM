@@ -66,7 +66,7 @@ public class UsrMemberController {
 				genFileService.save(multipartFile, newMemberId);
 			}
 		}
-		
+
 		String afterJoinUri = "../member/login?afterLoginUri=" + Ut.getUriEncoded(afterLoginUri);
 		return rq.jsReplace("회원가입이 완료되었습니다. 로그인 후 이용해주세요", afterJoinUri);
 	}

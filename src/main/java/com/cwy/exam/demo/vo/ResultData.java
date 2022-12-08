@@ -4,9 +4,11 @@ import java.util.Map;
 
 import com.cwy.exam.demo.util.Ut;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class ResultData<DT> {

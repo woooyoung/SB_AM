@@ -1,13 +1,5 @@
 package com.cwy.exam.demo.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -16,12 +8,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartRequest;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Map;
 
 import com.cwy.exam.demo.exception.GenFileNotFoundException;
 import com.cwy.exam.demo.service.GenFileService;
@@ -29,8 +24,7 @@ import com.cwy.exam.demo.vo.GenFile;
 import com.cwy.exam.demo.vo.ResultData;
 
 @Controller
-public class GenFileController {
-
+public class CommonGenFileController {
 	@Value("${custom.genFileDirPath}")
 	private String genFileDirPath;
 
@@ -89,5 +83,4 @@ public class GenFileController {
 
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType)).body(resource);
 	}
-
 }
