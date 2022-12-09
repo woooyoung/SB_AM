@@ -84,6 +84,20 @@
 			return;
 		}
 
+		const maxSizeMb = 10;
+		const maxSize = maxSizeMb * 1204 * 1204;
+
+		const profileImgFileInput = form["file__member__0__extra__profileImg__1"];
+
+		if (profileImgFileInput.value) {
+			if (profileImgFileInput.files[0].size > maxSize) {
+				alert(maxSizeMb + "MB 이하의 파일을 업로드 해주세요.");
+				profileImgFileInput.focus();
+
+				return;
+			}
+		}
+
 		submitJoinFormDone = true;
 		form.submit();
 	}
@@ -169,7 +183,9 @@
 					<tr>
 						<th>프로필 이미지</th>
 						<td>
-							<input name="file__member__0__extra__profileImg__1" placeholder="프로필 이미지를 선택해주세요" type="file" />
+							<input accept="image/gif, image/jpeg, image/png" name="file__member__0__extra__profileImg__1"
+								placeholder="프로필 이미지를 선택해주세요" type="file"
+							/>
 						</td>
 					</tr>
 					<tr>

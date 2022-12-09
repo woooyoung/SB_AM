@@ -66,7 +66,7 @@ public class MemberService {
 	}
 
 	public ResultData modify(int id, String loginPw, String name, String nickname, String cellphoneNum, String email) {
-		loginPw = Ut.sha256(loginPw);
+//		loginPw = Ut.sha256(loginPw);  // 2중 암호화 방지로 인한 제거
 		memberRepository.modify(id, loginPw, name, nickname, cellphoneNum, email);
 		return ResultData.from("S-1", "회원정보가 수정되었습니다");
 	}

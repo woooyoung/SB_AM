@@ -10,7 +10,7 @@
 			alert('처리중입니다');
 			return;
 		}
-		form.loginPw.value = form.loginPw.value.trim();
+		form.newLoginPw.value = form.newLoginPw.value.trim();
 
 		if (form.loginPwConfirm.value.length > 0) {
 			form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
@@ -22,9 +22,9 @@
 				return;
 			}
 
-			if (form.loginPw.value != form.loginPwConfirm.value) {
+			if (form.newLoginPw.value != form.loginPwConfirm.value) {
 				alert('비밀번호가 일치하지 않습니다');
-				form.loginPw.focus();
+				form.newLoginPw.focus();
 				return;
 			}
 		}
@@ -65,6 +65,26 @@
 			return;
 		}
 
+		const maxSizeMb = 10;
+		const maxSize = maxSizeMb * 1204 * 1204;
+
+		const profileImgFileInput = form["file__member__0__extra__profileImg__1"];
+
+		if (profileImgFileInput.value) {
+			if (profileImgFileInput.files[0].size > maxSize) {
+				alert(maxSizeMb + "MB 이하의 파일을 업로드 해주세요.");
+				profileImgFileInput.focus();
+
+				return;
+			}
+		}
+
+		if (form.newLoginPw.value.lenth > 0) {
+			form.loginPw.value = sha256(form.newLoginPw.value);
+			form.newLoginPw.value = '';
+			form.loginPwConfirm.value = '';
+		}
+
 		MemberModify__submitDone = true;
 		form.submit();
 	}
@@ -73,10 +93,12 @@
 
 <section class="mt-8 text-xl">
 	<div class="container mx-auto px-3">
-		<form class="table-box-type-1" method="POST" action="../member/doModify"
+		<form class="table-box-type-1" method="POST" enctype="multipart/form-data" action="../member/doModify"
 			onsubmit="MemberModify__submit(this); return false;"
 		>
 			<input type="hidden" name="memberModifyAuthKey" value="${param.memberModifyAuthKey }" />
+			<input type="hidden" name="loginPw">
+
 			<table class="table table-zebra w-full">
 				<colgroup>
 					<col width="200" />
@@ -94,7 +116,7 @@
 					<tr>
 						<th>새 비밀번호</th>
 						<td>
-							<input name="loginPw" class="w-full input input-bordered  max-w-xs" placeholder="새 비밀번호를 입력해주세요" />
+							<input name="newLoginPw" class="w-full input input-bordered  max-w-xs" placeholder="새 비밀번호를 입력해주세요" />
 						</td>
 					</tr>
 					<tr>
@@ -116,6 +138,14 @@
 						<td>
 							<input value="${rq.loginedMember.nickname }" name="nickname" class="w-full input input-bordered  max-w-xs"
 								placeholder="닉네임을 입력해주세요"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<th>프로필 이미지</th>
+						<td>
+							<input accept="image/gif, image/jpeg, image/png" name="file__member__0__extra__profileImg__1"
+								placeholder="프로필 이미지를 선택해주세요" type="file"
 							/>
 						</td>
 					</tr>

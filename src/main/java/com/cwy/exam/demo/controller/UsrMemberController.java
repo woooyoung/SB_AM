@@ -216,7 +216,7 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
 	public String doModify(String memberModifyAuthKey, String loginPw, String name, String nickname,
-			String cellphoneNum, String email) {
+			String cellphoneNum, String email, MultipartRequest multipartRequest) {
 		if (Ut.empty(memberModifyAuthKey)) {
 			return rq.jsHistoryBack("회원 수정 인증코드가 필요합니다");
 		}
@@ -230,13 +230,22 @@ public class UsrMemberController {
 
 		if (Ut.empty(loginPw)) {
 			loginPw = null;
-			return rq.jsHistoryBack("비밀번호를 입력해주세요");
 		}
 
-		ResultData modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, cellphoneNum,
-				email);
+		ResultData modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, email,
+				cellphoneNum);
 
-		return rq.jsReplace(modifyRd.getMsg(), "/");
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+
+		for (String fileInputName : fileMap.keySet()) {
+			MultipartFile multipartFile = fileMap.get(fileInputName);
+
+			if (multipartFile.isEmpty() == false) {
+				genFileService.save(multipartFile, rq.getLoginedMemberId());
+			}
+		}
+
+		return rq.jsReplace(modifyRd.getMsg(), "/usr/member/myPage");
 
 	}
 
