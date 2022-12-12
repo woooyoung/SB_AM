@@ -65,9 +65,15 @@ public class MemberService {
 		return memberRepository.getMemberById(id);
 	}
 
-	public ResultData modify(int id, String loginPw, String name, String nickname, String cellphoneNum, String email) {
-//		loginPw = Ut.sha256(loginPw);  // 2중 암호화 방지로 인한 제거
-		memberRepository.modify(id, loginPw, name, nickname, cellphoneNum, email);
+	public ResultData modify(int actorId, String loginPw, String name, String nickname, String cellphoneNum,
+			String email) {
+		// loginPw = Ut.sha256(loginPw); // 2중 암호화 방지로 인한 제거
+		memberRepository.modify(actorId, loginPw, name, nickname, cellphoneNum, email);
+
+		if (loginPw != null) {
+			attrService.remove("member", actorId, "extra", "useTempPassword");
+		}
+
 		return ResultData.from("S-1", "회원정보가 수정되었습니다");
 	}
 

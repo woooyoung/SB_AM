@@ -2,6 +2,8 @@ package com.cwy.exam.demo.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,21 +87,22 @@ public class UsrMemberController {
 	@ResponseBody
 	public String doLogin(String loginId, String loginPw, @RequestParam(defaultValue = "/") String afterLoginUri) {
 
-		if (Ut.empty(loginId)) {
-			return Ut.jsHistoryBack("아이디를 입력해주세요");
-		}
-
-		if (Ut.empty(loginPw)) {
-			return Ut.jsHistoryBack("비밀번호를 입력해주세요");
-		}
+//		if (Ut.empty(loginId)) {
+//			return Ut.jsHistoryBack("아이디를 입력해주세요");
+//		}
+//
+//		if (Ut.empty(loginPw)) {
+//			return Ut.jsHistoryBack("비밀번호를 입력해주세요");
+//		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
 			return Ut.jsHistoryBack("아이디를 잘못 입력했습니다");
 		}
+		System.err.println("loginPw : " + loginPw);
 
-		if (member.getLoginPw().equals(Ut.sha256(loginPw)) == false) {
+		if (member.getLoginPw().equals(loginPw) == false) {
 			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다");
 		}
 
@@ -184,7 +187,7 @@ public class UsrMemberController {
 			return rq.jsHistoryBack("비밀번호를 입력해주세요");
 		}
 
-		if (rq.getLoginedMember().getLoginPw().equals(Ut.sha256(loginPw)) == false) {
+		if (rq.getLoginedMember().getLoginPw().equals(loginPw) == false) {
 			return rq.jsHistoryBack("비밀번호가 일치하지 않습니다");
 		}
 
@@ -215,8 +218,8 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doModify")
 	@ResponseBody
-	public String doModify(String memberModifyAuthKey, String loginPw, String name, String nickname,
-			String cellphoneNum, String email, MultipartRequest multipartRequest) {
+	public String doModify(HttpServletRequest req, String memberModifyAuthKey, String loginPw, String name,
+			String nickname, String cellphoneNum, String email, MultipartRequest multipartRequest) {
 		if (Ut.empty(memberModifyAuthKey)) {
 			return rq.jsHistoryBack("회원 수정 인증코드가 필요합니다");
 		}
@@ -227,6 +230,13 @@ public class UsrMemberController {
 		if (checkMemberModifyAuthKeyRd.isFail()) {
 			return rq.jsHistoryBack(checkMemberModifyAuthKeyRd.getMsg());
 		}
+
+		System.err.println("name : " + name);
+		System.err.println("memberModifyAuthKey : " + memberModifyAuthKey);
+		System.err.println("nickname : " + nickname);
+		System.err.println("cellphoneNum : " + cellphoneNum);
+		System.err.println("email : " + email);
+		System.err.println("loginPw : " + loginPw);
 
 		if (Ut.empty(loginPw)) {
 			loginPw = null;

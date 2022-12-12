@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.cwy.exam.demo.util.Ut"%>
 <c:set var="pageTitle" value="MEMBER MODIFY" />
 <%@ include file="../common/head.jspf"%>
 
@@ -12,19 +13,17 @@
 		}
 		form.newLoginPw.value = form.newLoginPw.value.trim();
 
-		if (form.loginPwConfirm.value.length > 0) {
+		if (form.newLoginPw.value.length > 0) {
 			form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
 
 			if (form.loginPwConfirm.value.length == 0) {
-				alert('비밀번호 확인을 입력해주세요');
+				alert('비밀번호확인을 입력해주세요.');
 				form.loginPwConfirm.focus();
-
 				return;
 			}
-
 			if (form.newLoginPw.value != form.loginPwConfirm.value) {
-				alert('비밀번호가 일치하지 않습니다');
-				form.newLoginPw.focus();
+				alert('비밀번호확인이 일치하지 않습니다.');
+				form.loginPwConfirm.focus();
 				return;
 			}
 		}
@@ -79,11 +78,13 @@
 			}
 		}
 
-		if (form.newLoginPw.value.lenth > 0) {
+		if (form.newLoginPw.value.length  > 0) {
 			form.loginPw.value = sha256(form.newLoginPw.value);
 			form.newLoginPw.value = '';
 			form.loginPwConfirm.value = '';
 		}
+		console.log("newLoginPw" + newLoginPw);
+		console.log("loginPw" + loginPw);
 
 		MemberModify__submitDone = true;
 		form.submit();
@@ -178,14 +179,6 @@
 
 		<div class="btns">
 			<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
-			<c:if test="${article.extra__actorCanModify }">
-				<a class="btn-text-link btn btn-active btn-ghost" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.extra__actorCanDelete }">
-				<a class="btn-text-link btn btn-active btn-ghost" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../article/doDelete?id=${article.id }"
-				>삭제</a>
-			</c:if>
 		</div>
 	</div>
 </section>
