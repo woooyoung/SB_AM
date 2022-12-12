@@ -245,6 +245,11 @@ public class UsrMemberController {
 		ResultData modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, email,
 				cellphoneNum);
 
+		if (req.getParameter("deleteFile__member__0__extra__profileImg__1") != null) {
+			System.out.println("실행됨.");
+			genFileService.deleteGenFiles("member", rq.getLoginedMemberId(), "extra", "profileImg", 1);
+		}
+
 		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
 
 		for (String fileInputName : fileMap.keySet()) {

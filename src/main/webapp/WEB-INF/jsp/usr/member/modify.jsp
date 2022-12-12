@@ -64,6 +64,12 @@
 			return;
 		}
 
+		const deleteProfileImgFileInput = form["deleteFile__member__0__extra__profileImg__1"];
+
+		if (deleteProfileImgFileInput.checked) {
+			form["file__member__0__extra__profileImg__1"].vlaue = '';
+		}
+
 		const maxSizeMb = 10;
 		const maxSize = maxSizeMb * 1204 * 1204;
 
@@ -78,7 +84,7 @@
 			}
 		}
 
-		if (form.newLoginPw.value.length  > 0) {
+		if (form.newLoginPw.value.length > 0) {
 			form.loginPw.value = sha256(form.newLoginPw.value);
 			form.newLoginPw.value = '';
 			form.loginPwConfirm.value = '';
@@ -145,6 +151,17 @@
 					<tr>
 						<th>프로필 이미지</th>
 						<td>
+							<img class="w-40 h-40 object-cover" src="${rq.getProfileImgUri(rq.loginedMember.id)}" alt=""
+								onerror="${rq.removeProfileImgIfNotExitOnErrorHtmlAttr}"
+							/>
+
+							<div class="mt-2">
+								<label class="cursor-pointer inline-flex"> <span class="label-text mr-2 mt-1">이미지 삭제</span>
+									<div>
+										<input type="checkbox" name="deleteFile__member__0__extra__profileImg__1" class="checkbox" value="Y" />
+									</div>
+								</label>
+							</div>
 							<input accept="image/gif, image/jpeg, image/png" name="file__member__0__extra__profileImg__1"
 								placeholder="프로필 이미지를 선택해주세요" type="file"
 							/>
